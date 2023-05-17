@@ -194,7 +194,9 @@ in
   };
 
   config = let
-      igpuDriver = if pCfg.intelBusId != "" then "modesetting" else "amdgpu";
+      # Force use the modesetting driver
+      # igpuDriver = if pCfg.intelBusId != "" then "modesetting" else "amdgpu";
+      igpuDriver = "modesetting";
       igpuBusId = if pCfg.intelBusId != "" then pCfg.intelBusId else pCfg.amdgpuBusId;
   in mkIf enabled {
     assertions = [
