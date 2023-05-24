@@ -19,8 +19,10 @@
 , smartmontools
 , substituteAll
 , touchegg
+, util-linux
 , vte
 , wrapGAppsHook
+, xdg-utils
 , xprop
 }:
 let
@@ -93,6 +95,19 @@ super: lib.trivial.pipe super [
       done
     '';
   }))
+
+  (patchExtension "gtk4-ding@smedius.gitlab.com" (old: {
+    patches = [
+      (substituteAll {
+        inherit gjs util-linux xdg-utils;
+        util_linux = util-linux;
+        xdg_utils = xdg-utils;
+        src = ./extensionOverridesPatches/gtk4-ding_at_smedius.gitlab.com.patch;
+        nautilus_gsettings_path = "${glib.getSchemaPath gnome.nautilus}";
+      })
+    ];
+  }))
+
 
   (patchExtension "pano@elhan.io" (old: {
     patches = [
