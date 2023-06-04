@@ -36,9 +36,13 @@ let
         echo "${metadata}" | base64 --decode > $out/metadata.json
       '';
     };
+    nativeBuildInputs = with pkgs; [ glib ];
     dontBuild = true;
     installPhase = ''
       runHook preInstall
+      if [ -d schemas ]; then
+        glib-compile-schemas --strict schemas
+      fi
       mkdir -p $out/share/gnome-shell/extensions/
       cp -r -T . $out/share/gnome-shell/extensions/${uuid}
       runHook postInstall
