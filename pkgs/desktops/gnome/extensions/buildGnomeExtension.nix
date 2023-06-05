@@ -37,12 +37,15 @@ let
       '';
     };
     nativeBuildInputs = with pkgs; [ glib ];
-    dontBuild = true;
-    installPhase = ''
-      runHook preInstall
+    
+    buildPhase = ''
       if [ -d schemas ]; then
         glib-compile-schemas --strict schemas
       fi
+    '';
+
+    installPhase = ''
+      runHook preInstall
       mkdir -p $out/share/gnome-shell/extensions/
       cp -r -T . $out/share/gnome-shell/extensions/${uuid}
       runHook postInstall
