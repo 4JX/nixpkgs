@@ -39,9 +39,11 @@ let
     nativeBuildInputs = with pkgs; [ glib ];
     
     buildPhase = ''
+      runHook preBuild
       if [ -d schemas ]; then
         glib-compile-schemas --strict schemas
       fi
+      runHook postBuild
     '';
 
     installPhase = ''
