@@ -2,13 +2,13 @@
 
 buildGoModule rec {
   pname = "kubectl-gadget";
-  version = "0.28.0";
+  version = "0.28.1";
 
   src = fetchFromGitHub {
     owner = "inspektor-gadget";
     repo = "inspektor-gadget";
     rev = "v${version}";
-    hash = "sha256-iQ+9CN6De2jz3+dZ26jgqbXAx9Fef8ROgVX8kKYMAG0=";
+    hash = "sha256-+eysHATyAdCN6HVPN2bgc/ICo+XXaef0H0UDW2xCcjc=";
   };
 
   vendorHash = "sha256-0XByai7fEnkmEEkH1koVM1+z3UNFLbsUCK3sP4KBe+A=";
@@ -17,7 +17,7 @@ buildGoModule rec {
 
   ldflags = [
     "-s" "-w"
-    "-X github.com/inspektor-gadget/inspektor-gadget/cmd/common.version=v${version}"
+    "-X github.com/inspektor-gadget/inspektor-gadget/internal/version.version=v${version}"
     "-X main.gadgetimage=ghcr.io/inspektor-gadget/inspektor-gadget:v${version}"
     "-extldflags=-static"
   ];

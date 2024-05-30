@@ -9,25 +9,16 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "waylyrics";
-  version = "0.3.5";
+  version = "0.3.9";
 
   src = fetchFromGitHub {
     owner = "waylyrics";
     repo = "waylyrics";
     rev = "v${version}";
-    hash = "sha256-44O2+OLsBZhl0/0910RsdCe8cHt6UGhYF7CUfhsFQU8=";
+    hash = "sha256-RLqBjN5haZKjbTK8U2Y62IY+D9lR3NaHK3erAcauhzE=";
   };
 
-  cargoLock = {
-    lockFile = ./Cargo.lock;
-    outputHashes = {
-      "ksni-0.2.1" = "sha256-kjirYZVDP9e7/933L7gwSgVrNInSTbsRCAfnhUqmcLI=";
-    };
-  };
-
-  postPatch = ''
-    cp ${./Cargo.lock} Cargo.lock
-  '';
+  cargoHash = "sha256-yEoYPG362rloCXVO23/qR8vbmxHv2hot3AhYgJknrOY=";
 
   nativeBuildInputs = [ pkg-config wrapGAppsHook4 ];
   buildInputs = [ openssl dbus ];
