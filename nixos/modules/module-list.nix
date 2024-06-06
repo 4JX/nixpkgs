@@ -218,6 +218,7 @@
   ./programs/kbdlight.nix
   ./programs/kclock.nix
   ./programs/kdeconnect.nix
+  ./programs/ladybird.nix
   ./programs/lazygit.nix
   ./programs/kubeswitch.nix
   ./programs/less.nix
@@ -281,6 +282,7 @@
   ./programs/systemtap.nix
   ./programs/thefuck.nix
   ./programs/thunar.nix
+  ./programs/thunderbird.nix
   ./programs/tmux.nix
   ./programs/traceroute.nix
   ./programs/trippy.nix
@@ -769,6 +771,7 @@
   ./services/misc/octoprint.nix
   ./services/misc/ollama.nix
   ./services/misc/ombi.nix
+  ./services/misc/open-webui.nix
   ./services/misc/osrm.nix
   ./services/misc/owncast.nix
   ./services/misc/packagekit.nix
@@ -1245,6 +1248,7 @@
   ./services/search/meilisearch.nix
   ./services/search/opensearch.nix
   ./services/search/qdrant.nix
+  ./services/search/quickwit.nix
   ./services/search/sonic-server.nix
   ./services/search/typesense.nix
   ./services/security/aesmd.nix
